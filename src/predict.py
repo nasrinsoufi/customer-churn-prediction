@@ -2,6 +2,15 @@ from pathlib import Path
 import joblib
 import pandas as pd
 
+BASE_DIR = Path(__file__).resolve().parent.parent
+
+MODEL_PATH = BASE_DIR / "models" / "churn_pipeline.joblib"
+
+
+def load_model():
+    """Load the trained churn prediction pipeline."""
+    return joblib.load(MODEL_PATH)
+
 def predict_churn(customer_data: dict, model=None):
     """Predict whether a customer is likely to churn."""
 
